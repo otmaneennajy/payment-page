@@ -1,89 +1,62 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mobile Payment</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-    /* Reset */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
-      font-family: system-ui, sans-serif;
-      background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #333;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 20px;
     }
-
-    .form-container {
-      width: 100%;
+    .container {
       max-width: 360px;
-      padding: 2rem;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.15);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.3);
-      color: #222;
+      margin: 40px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-
     h1 {
-      text-align: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: 20px;
       font-size: 1.4rem;
-      font-weight: 600;
+      text-align: center;
     }
-
     label {
       display: block;
-      margin-top: 1rem;
+      margin-top: 15px;
       font-size: 0.9rem;
     }
-
     input, select, button {
       width: 100%;
-      padding: 0.75rem 1rem;
-      margin-top: 0.5rem;
+      padding: 10px;
+      margin-top: 8px;
       font-size: 1rem;
-      border-radius: 8px;
-      border: none;
-      background: rgba(255,255,255,0.4);
-      color: #222;
-      outline: none;
-      backdrop-filter: blur(5px);
-      transition: background .3s, transform .2s;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
     }
-
-    input:focus, select:focus {
-      background: rgba(255,255,255,0.6);
-    }
-
     button {
-      background: rgba(255,255,255,0.5);
+      background: #007acc;
+      color: #fff;
+      border: none;
       cursor: pointer;
-      margin-top: 1.5rem;
-      font-weight: 600;
+      margin-top: 20px;
     }
-
     button:hover {
-      background: rgba(255,255,255,0.7);
-      transform: translateY(-2px);
+      background: #005f99;
     }
-
     .message {
-      margin-top: 1rem;
+      margin-top: 15px;
       text-align: center;
       font-size: 0.9rem;
-      color: #e74c3c;
-      min-height: 1.2em;
+      color: #d00;
     }
   </style>
 </head>
 <body>
-  <div class="form-container">
+  <div class="container">
     <h1>Mobile Payment</h1>
 
     <label for="phone">Phone Number</label>
@@ -107,11 +80,11 @@
       const phone   = document.getElementById('phone').value.trim();
       const amount  = document.getElementById('amount').value.trim();
       const method  = document.getElementById('method').value;
-      const msgEl   = document.getElementById('message');
-      msgEl.textContent = '';
+      const message = document.getElementById('message');
+      message.textContent = '';
 
       if (!phone || !amount) {
-        msgEl.textContent = 'Please enter both phone number and amount.';
+        message.textContent = 'Please enter both phone number and amount.';
         return;
       }
 
@@ -155,10 +128,10 @@
         if (payData.status === 'SUCCESSFULL') {
           window.location.href = payData.redirect_url || 'success.html';
         } else {
-          msgEl.textContent = 'Payment error: ' + payData.message;
+          message.textContent = 'Payment error: ' + payData.message;
         }
       } catch (err) {
-        msgEl.textContent = 'Technical error: ' + err.message;
+        message.textContent = 'Technical error: ' + err.message;
       }
     });
   </script>
