@@ -2,57 +2,87 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mobile Payment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
+    /* Base Reset */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      margin: 0;
-      padding: 20px;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #74ABE2 0%, #5563DE 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
     }
     .container {
-      max-width: 360px;
-      margin: 40px auto;
       background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 2rem;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .container::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at center, rgba(85,99,222,0.2), transparent 70%);
+      transform: rotate(45deg);
     }
     h1 {
-      margin-bottom: 20px;
-      font-size: 1.4rem;
       text-align: center;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      color: #2c3e50;
     }
     label {
       display: block;
-      margin-top: 15px;
+      margin-top: 1rem;
       font-size: 0.9rem;
+      font-weight: 500;
     }
     input, select, button {
       width: 100%;
-      padding: 10px;
-      margin-top: 8px;
+      padding: 0.8rem 1rem;
+      margin-top: 0.5rem;
       font-size: 1rem;
+      border-radius: 8px;
       border: 1px solid #ccc;
-      border-radius: 5px;
-      box-sizing: border-box;
+      outline: none;
+      transition: border-color .3s, box-shadow .3s;
+    }
+    input:focus, select:focus {
+      border-color: #5563DE;
+      box-shadow: 0 0 0 3px rgba(85,99,222,0.2);
     }
     button {
-      background: #007acc;
+      background: #5563DE;
       color: #fff;
       border: none;
+      font-weight: 600;
+      margin-top: 1.5rem;
       cursor: pointer;
-      margin-top: 20px;
+      transition: background .3s, transform .2s;
     }
     button:hover {
-      background: #005f99;
+      background: #2c3e50;
+      transform: translateY(-2px);
     }
     .message {
-      margin-top: 15px;
+      margin-top: 1rem;
       text-align: center;
       font-size: 0.9rem;
-      color: #d00;
+      color: #e74c3c;
+      min-height: 1.2em;
     }
   </style>
 </head>
