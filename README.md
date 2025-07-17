@@ -1,4 +1,3 @@
-<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -77,9 +76,6 @@
   </div>
 
   <script>
-    // base URL of your Vercel proxy
-    const proxyBase = 'https://bpay-proxy-qenzas2yh-otmanes-projects-d2b10120.vercel.app';
-
     document.getElementById('pay-btn').addEventListener('click', async () => {
       const phone   = document.getElementById('phone').value.trim();
       const amount  = document.getElementById('amount').value.trim();
@@ -93,8 +89,8 @@
       }
 
       try {
-        // 1) Login to get token via proxy
-        const loginRes = await fetch(proxyBase + '/api/login-proxy', {
+        // 1) Login to get token
+        const loginRes = await fetch('https://v2.b-pay.co/service/api/v1/oauth/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -108,8 +104,8 @@
         }
         const token = loginData.authorisation.token;
 
-        // 2) Make payment via proxy
-        const payRes = await fetch(proxyBase + '/api/pay-proxy', {
+        // 2) Make payment
+        const payRes = await fetch('https://v2.b-pay.co/service/api/v1/paiement', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -140,4 +136,3 @@
     });
   </script>
 </body>
-</html>
